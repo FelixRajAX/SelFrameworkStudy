@@ -29,7 +29,7 @@ public class AlphaTest {
         Thread.sleep(3000);
         driver.manage().window().maximize();
         Assert.assertNotNull(driver.getTitle());
-        Reporter.log("Test completed in successfully");
+        Reporter.log("Test completed in as successfully");
     }
 
     @AfterMethod

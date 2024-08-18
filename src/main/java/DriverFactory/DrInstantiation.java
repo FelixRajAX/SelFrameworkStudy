@@ -17,35 +17,31 @@ public class DrInstantiation
         System.setProperty("webdriver.edge.driver",
                 "src/test/Resources/msedgedriver.exe");
         driver = new EdgeDriver();
-        WebDriver MaskedEvenCaptureDrObj = MaskWebDrObj(MyListener, driver);
-        openurl(MaskedEvenCaptureDrObj,url);
-        return MaskedEvenCaptureDrObj;
+        WebDriver EdgeMaskedEvenCaptureDrObj = MaskWebDrObj(MyListener, driver);
+        openurl(EdgeMaskedEvenCaptureDrObj,url);
+        return EdgeMaskedEvenCaptureDrObj;
     }
 
     public WebDriver chromelaunch(String url){
         System.setProperty("webdriver.chrome.driver",
                 "src/test/Resources/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get(url);
-        return driver;
+        WebDriver ChromeMaskedEvenCaptureDrObj = MaskWebDrObj(MyListener, driver);
+        openurl(ChromeMaskedEvenCaptureDrObj,url);
+        return ChromeMaskedEvenCaptureDrObj;
     }
 
-    public WebDriver firefoxlaunch(String url) throws InterruptedException {
+    public WebDriver firefoxlaunch(String url) {
         // Set the Path to Edge Driver.exe
         System.setProperty("webdriver.firefox.driver",
                 "src/test/Resources/geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.get(url);
-        return driver;
+        WebDriver FirefxMaskedEvenCaptureDrObj = MaskWebDrObj(MyListener, driver);
+        openurl(FirefxMaskedEvenCaptureDrObj,url);
+        return FirefxMaskedEvenCaptureDrObj;
     }
 
-    public WebDriver chromelaunch(WebDriver driver) throws InterruptedException {
-        // Set the Path to Edge Driver.exe
-        System.setProperty("webdriver.chrome.driver",
-                "\\NativeDrivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-        return driver;
-    }
+
     public void openurl(WebDriver driver, String url){
         driver.get(url);
     }

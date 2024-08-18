@@ -1,12 +1,18 @@
 package DriverFactory;
 
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
+
+import java.io.File;
+
 
 public class DrInstantiation
 {
@@ -47,5 +53,20 @@ public class DrInstantiation
     }
     public WebDriver MaskWebDrObj(WebDriverListener wl, WebDriver dr){
         return new EventFiringDecorator<>(wl).decorate(dr);
+    }
+
+    public void Takescreenshot(WebDriver dr){
+        try{
+            double rd = Math.random();
+            TakesScreenshot takscr = (TakesScreenshot) dr;
+            File scrfile = takscr.getScreenshotAs(OutputType.FILE);
+            String pathtosavefile = "target\\TakScrnsht" + "_" + rd + ".png";
+            System.out.println(pathtosavefile);
+            FileHandler.copy(scrfile, new File(pathtosavefile));
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }

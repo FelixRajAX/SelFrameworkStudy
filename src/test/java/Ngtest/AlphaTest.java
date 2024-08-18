@@ -1,6 +1,6 @@
 package Ngtest;
 import DriverFactory.DrInstantiation;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.*;
@@ -12,8 +12,8 @@ public class AlphaTest {
     DrInstantiation di = new DrInstantiation();
 
     @Parameters({"Browser", "url"})
-    @BeforeMethod
-    public void Multi_BrowserLaunch(String Browser, String url) throws InterruptedException {
+    @BeforeTest
+    public void Multi_BrowserLaunch(String Browser, String url)  {
         if (Browser.equalsIgnoreCase("edge")){
             driver = di.edgelaunch(url);
         } else if (Browser.equalsIgnoreCase("chrome")) {
@@ -32,7 +32,23 @@ public class AlphaTest {
         Reporter.log("Test completed in as successfully");
     }
 
-    @AfterMethod
+    @Test
+    public void searchgoogle(){
+        try{
+            WebElement searchbar = driver.findElement(By.xpath("//textarea[@title='Sear']"));
+            searchbar.sendKeys("Today's World Affairs");
+            searchbar.sendKeys(Keys.ENTER);
+            Thread.sleep(6000);
+            di.Takescreenshot(driver);
+        }
+        catch (Exception e){
+            Reporter.log("Exception Occurred-----" + e.getMessage());
+
+        }
+
+    }
+
+    @AfterTest
     public void teardown(){
         if (driver != null) {
             driver.quit();

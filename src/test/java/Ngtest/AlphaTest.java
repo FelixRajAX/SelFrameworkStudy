@@ -35,7 +35,7 @@ public class AlphaTest {
     @Test
     public void searchgoogle(){
         try{
-            WebElement searchbar = driver.findElement(By.xpath("//textarea[@title='Sear']"));
+            WebElement searchbar = driver.findElement(By.xpath("//textarea[@title='Search']"));
             searchbar.sendKeys("Today's World Affairs");
             searchbar.sendKeys(Keys.ENTER);
             Thread.sleep(6000);

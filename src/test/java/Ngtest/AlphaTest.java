@@ -22,7 +22,7 @@ public class AlphaTest {
             driver = di.firefoxlaunch(url);
         }
     }
-
+//Test for Git IntelliJ
 
     @Test
     public void NavigateToEStore() throws InterruptedException {

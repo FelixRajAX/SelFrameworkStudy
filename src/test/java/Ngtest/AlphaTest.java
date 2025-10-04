@@ -23,6 +23,7 @@ public class AlphaTest {
         }
     }
 //Test for Git IntelliJ
+    // Test for GIT IntelliJ Part 2
 
     @Test
     public void NavigateToEStore() throws InterruptedException {
